@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - TodoBackendApplication",
+      "request": "launch",
+      "mainClass": "test.todo.todobackend.TodoBackendApplication",
+      "projectName": "todo-backend"
+    }
+  ]
+}

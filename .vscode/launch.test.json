@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "todo-backend",
+                "projectName": "todo-backend",
+                "workingDirectory": "d:\\learn\\coding\\javascript\\vue\\todo\\todo-backend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "todo-backend",
+                "projectName": "todo-backend",
+                "workingDirectory": "d:\\learn\\coding\\javascript\\vue\\todo\\todo-backend",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
