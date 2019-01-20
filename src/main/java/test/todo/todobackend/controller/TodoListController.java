@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import test.todo.todobackend.domain.Todo;
 import test.todo.todobackend.domain.TodoForm;
 import test.todo.todobackend.controller.TodoException;
@@ -19,6 +21,7 @@ import test.todo.todobackend.repo.TodoListRepository;
 
 @Controller
 @RequestMapping(path = "/todo")
+@Api(value="todolist", description="todolist backend for vue.js learning")
 public class TodoListController {
 
   @Autowired
@@ -26,6 +29,7 @@ public class TodoListController {
 
   @GetMapping(path = "/all")
   @ResponseBody
+  @ApiOperation(value = "Get all todo items")
   public ServerResponse<List<Todo>> getAllTodos() {
     List<Todo> todos = todoListRepo.findAll();
     return ServerResponse.OK(todos);
@@ -33,6 +37,7 @@ public class TodoListController {
 
   @PostMapping(path = "/add/{title}")
   @ResponseBody
+  @ApiOperation(value = "Add a todo item")
   public ServerResponse<Todo> add(@PathVariable("title") String title) {
     Todo todo = new Todo();
     todo.setTitle(title);
@@ -42,6 +47,7 @@ public class TodoListController {
 
   @PostMapping(path = "/delete/{id}")
   @ResponseBody
+  @ApiOperation(value = "Delete one todo item by id")
   public ServerResponse<String> deleteById(@PathVariable("id") Integer id) {
     checkId(id);
     todoListRepo.deleteById(id);
@@ -50,6 +56,7 @@ public class TodoListController {
 
   @PostMapping(path = "/update/{id}")
   @ResponseBody
+  @ApiOperation(value = "Update one todo item by id")
   public ServerResponse<Todo> updateTodo(@PathVariable("id") Integer id, @RequestBody TodoForm todoForm) {
     checkId(id);
 
@@ -67,6 +74,7 @@ public class TodoListController {
 
   @PostMapping(path = "/deleteCompleted")
   @ResponseBody
+  @ApiOperation(value = "Delete all completed todo items")
   public ServerResponse<String> deleteCompleted() {
     todoListRepo.deleteCompleted();
     return ServerResponse.OK("delete success");
@@ -74,6 +82,7 @@ public class TodoListController {
 
   @PostMapping(path = "/checkOrUncheckAll")
   @ResponseBody
+  @ApiOperation(value = "Check or uncheck all todo items")
   public ServerResponse<String> checkAll(@RequestParam("checked") boolean checked) {
     todoListRepo.checkAll(checked);
     return ServerResponse.OK("success");
